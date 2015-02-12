@@ -82,7 +82,9 @@ public class Maze
 	solve(x-1,y);
 	solve(x,y+1);
 	solve(x,y-1);
-	board[x][y]=visited;
+	if (!solved) {
+	    board[x][y]=visited;
+	}
     }
 		
     public static void main(String[] args){
