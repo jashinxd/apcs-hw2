@@ -4,6 +4,8 @@ import java.util.*;
 public class nqueens{
     private char[][] chessboard;
     private int size;
+    private char queen = 'Q';
+    private char bad = '.';
 
     public void delay(int n){
 	try {
@@ -34,7 +36,9 @@ public class nqueens{
 	return s;
     }
 
-    public void solve(int x, int y) {
+    public void solve() {
+	Random r = new Random();
+	chessboard[r.nextInt(size)][r.nextInt(size)] = queen;
 	
 	
 
