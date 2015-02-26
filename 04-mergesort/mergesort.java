@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class mergesort {
-    private ArrayList<Integer> deck = new ArrayList<Integer>();
+    //private ArrayList<Integer> deck = new ArrayList<Integer>();
     //private ArrayList<Integer> a = new ArrayList<Integer>();
     //private ArrayList<Integer> b = new ArrayList<Integer>();
 
@@ -37,10 +37,17 @@ public class mergesort {
 	}
 	return sorted;
     }
+
+    public ArrayList<Integer> msort(ArrayList<Integer> a) {
+	//ArrayList<Integer> sorted = new ArrayList<Integer>();
+	ArrayList<Integer> half1 = a.subList(0, a.size() / 2);
+	ArrayList<Integer> half2 = a.subList(a.size() / 2 + 1, a.size());
+	ArrayList<Integer> r1 = msort(half1);
+	ArrayList<Integer> r2 = msort(half2);
+	return merge(r1, r2);
+    }
+	
 	    
-	    
-	//if (a.size <= 1) return a;
-	//if (b.size <= 1) return b;
     public static void main(String[] args) {
 	mergesort m = new mergesort();
 	ArrayList<Integer> a = new ArrayList<Integer>();
