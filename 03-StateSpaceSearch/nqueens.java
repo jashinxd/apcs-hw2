@@ -100,12 +100,13 @@ public class nqueens{
 	System.out.println(this);
         for (int i = 0; i < size; i++) {
 	    for (int n = 0; n < size; n++) {
-		if (numEmpty == 0) {
+		if (numEmpty == 0 &&
+		    !solved) {
 		    chessboard = origboard;
 		    numQueen = origNumQueen;
-		    numEmpty = origNumEmpty;
-		}	
-		solve(i, n);	
+		    numEmpty = origNumEmpty;	
+		}
+		solve(i, n);		    
 	    }
 	}
     }
