@@ -3,6 +3,9 @@ import java.util.*;
 
 public class mergesort {
     private ArrayList<Integer> randNums = new ArrayList<Integer>();
+
+    public mergesort(){
+    }
     
     public mergesort(int listLen, int greatestInt) {
 	Random r = new Random();
@@ -52,7 +55,8 @@ public class mergesort {
     }	
 
     public ArrayList<Integer> msortspeed() {
-	return msort(
+	return msort(randNums);
+    }
 	    
     public static void main(String[] args) {
 	mergesort m = new mergesort();
