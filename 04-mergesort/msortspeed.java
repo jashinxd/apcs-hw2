@@ -3,7 +3,7 @@ import java.util.*;
 
 public class msortspeed {
     public static void main(String[] args) {
-	//100,000 elements in array
+	//100,000 elements in array, numbers from 0 - 999
 	mergesort m = new mergesort(100000, 1000);
 	m.msortspeed();
     }
