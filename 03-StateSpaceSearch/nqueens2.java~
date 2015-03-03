@@ -1,9 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-public class nqueens{
+public class nqueens2{
     private char[][] chessboard;
     private char[][] origboard;
+    private char[][] queenCoors;
     private int size;
     private char queen = 'Q';
     private char bad = '.';
@@ -20,7 +21,7 @@ public class nqueens{
 	} catch (Exception e) {}
     }
     
-    public nqueens(int s) {
+    public nqueens2(int s) {
 	size = s;
 	chessboard = new char[size][size];
 	for (int i = 0; i < size; i++) {
@@ -39,6 +40,20 @@ public class nqueens{
 	for (int i = 0; i < size; i++) {
 	    for (int n = 0; n < size; n++) {
 		s = s + " " + chessboard[i][n];
+	    }
+	    if (i != size - 1) {
+		s = s + "\n";
+	    }
+	}
+	s += "\n";
+	return s;
+    }
+
+    public String toString(char[][] a) {
+	String s = "";			
+	for (int i = 0; i < size; i++) {
+	    for (int n = 0; n < size; n++) {
+		s = s + " " + a[i][n];
 	    }
 	    if (i != size - 1) {
 		s = s + "\n";
@@ -102,6 +117,15 @@ public class nqueens{
 	System.out.println(this);
 	System.out.println("numEmpty: " + numEmpty);
 	System.out.println("numQueen: " + numQueen);
+	System.out.println(numEmpty);
+	if (numEmpty == 0) {
+	    System.out.println("bad");
+	    chessboard = origboard;
+	    numQueen = origNumQueen;
+	    numEmpty = origNumEmpty;
+	    chessboard[x][y] = bad;
+	}
+
 	if (numEmpty != 0) {
 	    origboard = chessboard;
 	    origNumQueen = numQueen;
@@ -110,14 +134,9 @@ public class nqueens{
 
         for (int i = 0; i < size; i++) {
 	    for (int n = 0; n < size; n++) {
-		if (numEmpty == 0 &&
-		    !solved) {
-		    chessboard = origboard;
-		    numQueen = origNumQueen;
-		    numEmpty = origNumEmpty;
-		    chessboard[x][y] = bad;
+       		if (chessboard[i][n] != bad) {
+		    solve(i, n);		    
 		}
-		solve(i, n);		    
 	    }
 	}
     }
@@ -128,3 +147,4 @@ public class nqueens{
     }
 }
     
+
