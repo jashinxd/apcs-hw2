@@ -2,45 +2,49 @@ import java.io.*;
 import java.util.*;
 
 public class mergesort {
-    private ArrayList<Integer> randNums = new ArrayList<Integer>();
-
-    public mergesort(){
-    }
+    private int[] randNums;
+    private int listLen;
+    private int greatestInt;
     
-    public mergesort(int listLen, int greatestInt) {
+    public mergesort(int listLength, int greatestInteger) {
 	Random r = new Random();
+	listLen = listLength;
+	greatestInt = greatestInteger;
+	randNums = new int[listLen];
 	for (int i = 0; i < listLen; i++) {
-	    randNums.add(r.nextInt(greatestInt));
+	    randNums[i] = r.nextInt(greatestInt));
 	}
     }
 
-    public ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b){
-	ArrayList<Integer> sorted = new ArrayList<Integer>();
+    public ArrayList<Integer> merge(int[] a, int[] b){
+	int[] sorted = new int[a.length + b.length];
 	int iA = 0;
 	int iB = 0;
-	while (iA < a.size() || iB < b.size()) {
-	    if (iB == b.size() && iA < a.size()) {
-		sorted.add(a.get(iA));
+	int iSorted = 0;
+	while (iA < a.length || iB < b.length) {
+	    if (iB == b.length && iA < a.length) {
+		sorted[iSorted] = a[iA];
 		iA++;
-	    } else if (iA == a.size() && iB < b.size()) {
-		sorted.add(b.get(iB));
+	    } else if (iA == a.length && iB < b.length) {
+		sorted[iSorted] = b[iB];
 		iB++;
-	    } else if (a.get(iA) <= b.get(iB)) {
-		sorted.add(a.get(iA));
+	    } else if (a[iA] <= b[iB]) {
+		sorted[iSorted] = a[iA]);
 		iA++;
-	    } else if (b.get(iB) <= a.get(iA)) {
-		sorted.add(b.get(iB));
+	    } else if (b[iB] <= a[iA]) {
+		sorted[iSorted] = b[iB]);
 		iB++;
 	    }
+	    iSorted++;
 	}
 	return sorted;
     }
 
     public ArrayList<Integer> msort(ArrayList<Integer> a) {
 	//ArrayList<Integer> sorted = new ArrayList<Integer>();
-	ArrayList<Integer> half1 = new ArrayList<Integer>();
-	ArrayList<Integer> half2 = new ArrayList<Integer>();
-	if (a.size() <= 1) {
+	int[] half1 = new int[a.length / 2];
+	int[] half2 = new int[a.length - (a.length / 2)];
+	if (a.length <= 1) {
 	    return a;
 	} else {
 	    for (int i = 0; i < a.size(); i++) {
@@ -86,5 +90,3 @@ public class mergesort {
 	System.out.println("After msort: " + m.msort(randNums));
     }
 }
-
-    
