@@ -35,6 +35,8 @@ public class selection {
 	    System.out.println("EI: " + EI);
 	    System.out.println(toString(D));
 	}
+	D[SI] = pivot;
+	System.out.println(toString(D));
 	return SI;
     }
     
