@@ -46,12 +46,14 @@ public class selection {
     public int select(int[] A, int k, int low, int high) {
 	Random r = new Random();
 	int pivotind = r.nextInt(A.length);
+	//int pivotind = low;
 	int li = low;
 	int hi = high;
 	int swap;
 	int pivot = A[pivotind];
 	A[pivotind] = A[hi];
 	A[hi] = pivot;
+	hi--;
 	System.out.println(pivotind);
 	System.out.println(toString(A));
 	while (li < hi) {
@@ -72,12 +74,12 @@ public class selection {
 	    System.out.println(toString(A));
 	}
 	System.out.println("Done");
-	if (pivotind == k) {
-	    return A[pivotind];
-	} else if (pivotind > k) {
-	    return select(A, k, low, hi);
+	if (li == k) {
+	    return A[li];
+	} else if (li > k) {
+	    return select(A, k, low, li - 1);
 	} else {
-	    return select(A, k, li, high);
+	    return select(A, k, li + 1, high);
 	}
     }
     
