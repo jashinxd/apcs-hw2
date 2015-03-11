@@ -45,8 +45,8 @@ public class selection {
     // --Select using in place
     public int select(int[] A, int k, int low, int high) {
 	Random r = new Random();
-	int pivotind = r.nextInt(A.length);
-	//int pivotind = low;
+	//int pivotind = low + r.nextInt(high - low);
+	int pivotind = low;
 	int li = low;
 	int hi = high;
 	int swap;
@@ -54,26 +54,30 @@ public class selection {
 	A[pivotind] = A[hi];
 	A[hi] = pivot;
 	hi--;
-	System.out.println(pivotind);
+	System.out.println(pivot);
 	System.out.println(toString(A));
 	while (li < hi) {
 	    if (A[li] < pivot) {
 	        li++;
-	    } else {
+	    } else if (A[li] > pivot) {
 		swap = A[li];
 		A[li] = A[hi];
 		A[hi] = swap;
 		hi--;
 	    }
 	    if (li == hi) {
-		li = pivotind;
+		if (A[li] < pivot) {
+		    li++;
+		    hi++;
+		}
 		A[high] = A[li];
 		A[li] = pivot;
-		li = hi;
 	    }
 	    System.out.println(toString(A));
 	}
 	System.out.println("Done");
+	System.out.println("li: " + li); 
+	System.out.println(toString(A));
 	if (li == k) {
 	    return A[li];
 	} else if (li > k) {
