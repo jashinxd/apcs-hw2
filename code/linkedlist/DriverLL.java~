@@ -1,0 +1,7 @@
+public class DriverLL {
+    public static void main(String[] args) {
+	LList l = new LList;
+	l.add("Hello");
+	System.out.println(l);
+    }
+}
