@@ -9,10 +9,11 @@ public class LList {
     }
 
     public Node nodeFind(int n) {
+	Node tmp = l;
 	for (int i = 0; i < n; i++) {
-	    l = l.getNext();
+	    tmp = tmp.getNext();
 	}
-	return l;
+	return tmp;
     }
 
     public String find(int n) {
@@ -20,8 +21,6 @@ public class LList {
     }
 
     public void insert(String s, int i) {
-	int atind1 = nodeFind(i);
-	int atind2 = nodeFind(i - 1);
 	if (i == 0) {
 	   add(s);
 	} else {
@@ -42,5 +41,16 @@ public class LList {
 	s = s + "null";
 	return s;
     }
-   
+
+    public static void main(String[] args) {
+	LList l = new LList();
+	l.add("Hello");
+	l.add("Beauitful");
+	l.add("World");
+	System.out.println("l: " + l);
+	System.out.println("l.find(1): " + l.find(1));
+	System.out.println("l.find(2): " + l.find(2));
+	System.out.println("l.insert(Awesome, 1): ");
+	l.insert("Awesome", 1);
+    }
 }
