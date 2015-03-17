@@ -5,7 +5,7 @@ public class LList {
     private int len;
 
     public LList() {
-	Node dummy = new Node("dummy");
+	dummy = new Node("");
 	dummy.setNext(l);
 	len = 0;
     }
@@ -14,25 +14,28 @@ public class LList {
 	Node tmp = new Node(s);
 	tmp.setNext(l);
 	l = tmp;
+	dummy.setNext(l);
 	len++;
     }
 
-    public Node nodeFind(int n) {
-	Node tmp = l;
-	for (int i = 0; i < n; i++) {
+    public Node nodeGet(int n) {
+	int ind = n + 1;
+	Node tmp = dummy;
+	for (int i = 0; i < ind; i++) {
 	    tmp = tmp.getNext();
 	}
 	return tmp;
     }
 
-    public String find(int n) {
-	return nodeFind(n).getData();
+    public String get(int n) {
+	return nodeGet(n).getData();
     }
 
-    public void insert(String s, int i) {
+    public void add(String s, int i) {
 	Node insert = new Node(s);
-	insert.setNext(nodeFind(i));
-	nodeFind(i - 1).setNext(insert);
+	insert.setNext(nodeGet(i));
+	nodeGet(i - 1).setNext(insert);
+	l = nodeGet(0);
 	System.out.println(this);
     }
 	
@@ -53,9 +56,10 @@ public class LList {
 	l.add("Beauitful");
 	l.add("World");
 	System.out.println("l: " + l);
-	System.out.println("l.find(1): " + l.find(1));
-	System.out.println("l.find(2): " + l.find(2));
-	System.out.println("l.insert(Awesome, 1): ");
-	l.insert("Awesome", 0);
+	System.out.println("l.get(0): " + l.get(0));
+	System.out.println("l.get(1): " + l.get(1));
+	System.out.println("l.get(2): " + l.get(2));	
+	System.out.println("l.add(Awesome, 0): ");
+	l.add("Awesome", 0);
     }
 }
