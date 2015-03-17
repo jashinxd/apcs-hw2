@@ -1,11 +1,17 @@
 public class LList {
 
     private Node l = null;
+    private int len;
+
+    public LList() {
+	l = new Node();
+	len = 0;
 
     public void add(String s) {
 	Node tmp = new Node(s);
 	tmp.setNext(l);
 	l = tmp;
+	len++;
     }
 
     public Node nodeFind(int n) {
