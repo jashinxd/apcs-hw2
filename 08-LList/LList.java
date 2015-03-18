@@ -38,8 +38,23 @@ public class LList {
 	l = nodeGet(0);
 	System.out.println(this);
     }
-	
 
+    /*
+    public String remove(int n) {
+	if (n < len || n < 0) {
+	    return "";
+	}
+	Node t = l;
+	for (int i = 0; i < n - 1; i++) {
+	    t = t.getNext();
+	}
+	String s = t.getNext().getData();
+	t.setNext(t.getNext().getNext());
+	l = t.nodeGet(0);
+	return s;
+    }
+
+    */x
     public String toString() {
 	String s = "";
 	Node tmp;
@@ -61,5 +76,8 @@ public class LList {
 	System.out.println("l.get(2): " + l.get(2));	
 	System.out.println("l.add(Awesome, 0): ");
 	l.add("Awesome", 0);
+	System.out.println("l.remove(1): ");
+	l.remove(1);
+	System.out.println(l);
     }
 }
