@@ -4,8 +4,10 @@ import java.lang.System;
 public class test {
     public static void main(String[] args) {
 	long t = System.currentTimeMillis();
-	System.out.println(t);
-	long start, elapsed;
+	//System.out.println(t);
+	long alstart, alelapsed;
+	long llstart, llelapsed;
+	long bistart, bielapsed;
 
 	Random rnd = new Random();
 	ArrayList<Integer> al = new ArrayList<Integer>();
@@ -13,7 +15,7 @@ public class test {
 	    al.add(rnd.nextInt(11));
 	}
 	
-	intLList ll = new intLListt();
+	intLList ll = new intLList();
 	for (int i = 0; i < 100000; i++) {
 	    ll.add(rnd.nextInt(11));
 	}
@@ -24,11 +26,31 @@ public class test {
 	}
 	
 	//Timing for ArrayList
-	start = System.currentTimeMillis();
+	alstart = System.currentTimeMillis();
+	int alSum = 0;
 	for (int i = 0; i < al.size(); i++) {
-	    al.get(i);
+	    alSum += al.get(i);
 	}
-	elapsed = System.currentTimeMillis();
+	alelapsed = System.currentTimeMillis() - alstart;
+	System.out.println("Time for Arraylist " + alelapsed);
+
+	//Timing for LinkedList
+	llstart = System.currentTimeMillis();
+	int llSum = 0;
+	for (int i = 0; i < ll.size(); i++) {
+	    llSum += ll.get(i);
+	}
+	llelapsed = System.currentTimeMillis() - llstart;
+	System.out.println("Time for Linkedlist " + llelapsed);
+
+	//Timing for Built in LinkedList
+	bistart = System.currentTimeMillis();
+	int biSum = 0;
+	for (int i = 0; i < bi.size(); i++) {
+	    biSum += bi.get(i);
+	}
+	bielapsed = System.currentTimeMillis() - bistart;
+	System.out.println("Time for BI LinkedList " + bielapsed);
 	
     }
-]
+}

@@ -18,10 +18,21 @@ public class LList {
 	len++;
     }
 
+    public void add(String s, int i) {
+	Node insert = new Node(s);
+	Node prevN = nodeGet(i - 1);
+	insert.setNext(prevN.getNext());
+	prevN.setNext(insert);
+	if (i == 0) {
+	    l = dummy.getNext();
+	}
+	len++;
+	System.out.println(this);
+    }
+
     public Node nodeGet(int n) {
-	int ind = n + 1;
 	Node tmp = dummy;
-	for (int i = 0; i < ind; i++) {
+	for (int i = 0; i < n + 1; i++) {
 	    tmp = tmp.getNext();
 	}
 	return tmp;
@@ -31,26 +42,36 @@ public class LList {
 	return nodeGet(n).getData();
     }
 
-    public void add(String s, int i) {
-	Node insert = new Node(s);
-	insert.setNext(nodeGet(i));
-	nodeGet(i - 1).setNext(insert);
-	l = nodeGet(0);
-	System.out.println(this);
-    }
-
     public String remove(int n) {
-	if (n < len || n < 0) {
+	if (n >= len || n < 0) {
 	    return "";
 	}
-	Node t = l;
-	for (int i = 0; i < n - 1; i++) {
-	    t = t.getNext();
+        Node tmp = nodeGet(n - 1);
+	String s = tmp.getNext().getData();
+	tmp.setNext(tmp.getNext().getNext());
+	if (n == 0) {
+	    l = tmp.getNext();
 	}
-	String s = t.getNext().getData();
-	t.setNext(t.getNext().getNext());
-	t = t.nodeGet(0);
+	len--;
 	return s;
+    }
+
+    
+    public boolean remove(String s) {
+	Node tmp;
+	for (tmp = dummy; tmp.getNext().getNext() != null; tmp = tmp.getNext()) {	    
+	    if (tmp.getNext().getData().equals(s)) {
+		System.out.println(tmp.getNext().getData());
+		tmp.setNext(tmp.getNext().getNext());
+		if (tmp == dummy) {
+		    l = tmp.getNext();
+		}
+		return true;
+
+	    }
+	}
+	tmp.setNext(null);
+	return true;
     }
 
     public String toString() {
@@ -66,7 +87,7 @@ public class LList {
     public static void main(String[] args) {
 	LList l = new LList();
 	l.add("Hello");
-	l.add("Beauitful");
+	l.add("Beautiful");
 	l.add("World");
 	System.out.println("l: " + l);
 	System.out.println("l.get(0): " + l.get(0));
@@ -74,8 +95,11 @@ public class LList {
 	System.out.println("l.get(2): " + l.get(2));	
 	System.out.println("l.add(Awesome, 0): ");
 	l.add("Awesome", 0);
-	System.out.println("l.remove(1): ");
-	//l.remove(1);
-	//System.out.println(l);
+	System.out.println("l.remove(3): ");
+	l.remove(3);
+	System.out.println(l);
+	System.out.println("l.remove(Awesome): ");
+	l.remove("Awesome");
+	System.out.println(l);
     }
 }

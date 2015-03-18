@@ -1,29 +1,29 @@
-public class Node {
+public class intNode {
     
-    private String data;
-    private Node next;
+    private int data;
+    private intNode next;
 
-    public Node(String s) {
+    public intNode(int s) {
 	data = s;
     }
     
-    public void setData(String s) {
+    public void setData(int s) {
 	data = s;
     }
     
-    public String getData() {
+    public int getData() {
 	return data;
     }
 
-    public void setNext(Node n) {
+    public void setNext(intNode n) {
 	next = n;
     }
 
-    public Node getNext() {
+    public intNode getNext() {
 	return next;
     }
 
     public String toString() {
-	return data;
+	return "" + data;
     }
 }
