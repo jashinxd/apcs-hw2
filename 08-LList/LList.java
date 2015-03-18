@@ -39,7 +39,6 @@ public class LList {
 	System.out.println(this);
     }
 
-    /*
     public String remove(int n) {
 	if (n < len || n < 0) {
 	    return "";
@@ -50,11 +49,10 @@ public class LList {
 	}
 	String s = t.getNext().getData();
 	t.setNext(t.getNext().getNext());
-	l = t.nodeGet(0);
+	t = t.nodeGet(0);
 	return s;
     }
 
-    */
     public String toString() {
 	String s = "";
 	Node tmp;
