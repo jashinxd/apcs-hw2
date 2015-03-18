@@ -13,7 +13,7 @@ public class test {
 	    al.add(rnd.nextInt(11));
 	}
 	
-	intLList ll = new intLListt();
+	LList ll = new LListt();
 	for (int i = 0; i < 100000; i++) {
 	    ll.add(rnd.nextInt(11));
 	}
@@ -23,12 +23,11 @@ public class test {
 	    bi.add(rnd.nextInt(11));
 	}
 	
+	/*
 	//Timing for ArrayList
 	start = System.currentTimeMillis();
-	for (int i = 0; i < al.size(); i++) {
-	    al.get(i);
-	}
+	for 
 	elapsed = System.currentTimeMillis();
-	
+	*/
     }
 ]
