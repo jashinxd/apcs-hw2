@@ -10,6 +10,11 @@ public class intLList {
 	len = 0;
     }
 
+    public LLit getLLit() {
+	LLit llit = new LLit(l);
+	return llit;
+    }
+
     public void add(int s) {
 	intNode tmp = new intNode(s);
 	tmp.setNext(l);

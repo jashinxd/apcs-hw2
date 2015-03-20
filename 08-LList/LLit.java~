@@ -1,0 +1,7 @@
+public class LLit {
+    private intNode l;
+    public LLit(intNode n) {
+	l = getNext();
+    }
+}
+		 
