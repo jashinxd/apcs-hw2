@@ -17,9 +17,13 @@ public class myStack<E>{
     
     public E pop(){
         // remove and return the top item from the stack
-	E retval = l.getNext().getData();
-	l.setNext(l.getNext().getNext());
-	return retval;
+	if (!empty) {
+	    E retval = l.getNext().getData();
+	    l.setNext(l.getNext().getNext());
+	    return retval;
+	} else {
+	    return "Empty";
+	}
     }
 
     public boolean empty(){

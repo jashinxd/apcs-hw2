@@ -1,0 +1,29 @@
+public class myStackA {
+
+    private int[] s;
+    private int len;
+
+    public myStackA() {
+	len = 0;
+	s = new int[len];
+    }
+
+    public void push(int data){
+	// add something to the top
+	len++;
+	s = new int[len];
+	s[0] = data;	
+    }
+
+    public int pop(){
+        // remove and return the top item from the stack
+    }
+
+    public boolean empty(){
+
+    }
+
+    public int top() {
+        // return the top item from the stack
+    }
+}
