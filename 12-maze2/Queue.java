@@ -20,28 +20,28 @@ public class Queue<E> {
 	return s + "TAIL";
     }
 
-    public void enqueue(E data) {
+    public void enqueue(E data, int x, int y) {
 	if (start == null) {
-	    start = new Node<E>(data);
+	    start = new Node<E>(data, x, y);
 	    end = start;
 	} else {
-	    Node<E> temp = new Node<E>(data);
+	    Node<E> temp = new Node<E>(data, x, y);
 	    end.setNext(temp);
 	    end = temp;
 	}
     }
 
-    public E dequeue() {
+    public Node<E> dequeue() {
 	Node<E> temp = start;
 	start = start.getNext();
-	return temp.getData();
+	return temp;
     }
 
     public boolean empty() {
 	return start == null;
     }
 
-    public E head() {
-	return start.getData();
+    public Node<E> head() {
+	return start;
     }
 }
