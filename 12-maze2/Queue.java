@@ -20,12 +20,13 @@ public class Queue<E> {
 	return s + "TAIL";
     }
 
-    public void enqueue(E data, int x, int y) {
+    public void enqueue(E data, int x, int y, Node<E> prev) {
 	if (start == null) {
 	    start = new Node<E>(data, x, y);
 	    end = start;
 	} else {
 	    Node<E> temp = new Node<E>(data, x, y);
+	    temp.setPrev(prev);
 	    end.setNext(temp);
 	    end = temp;
 	}
