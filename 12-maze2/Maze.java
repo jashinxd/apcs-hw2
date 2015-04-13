@@ -84,7 +84,7 @@ public class Maze{
 	    		current = current.getPrev();
 	    		System.out.println(this);
 	    		try{
-					Thread.sleep(25);
+			    Thread.sleep(25);
 	    		} catch (Exception e){}
 	    	}
 	    	solved = true;
