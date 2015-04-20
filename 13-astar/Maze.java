@@ -1,8 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Maze 
-{
+public class Maze{
     private char[][] board;
     private int maxX;
     private int maxY;
@@ -94,17 +93,19 @@ public class Maze
     */
     public void addToFront(int tx,int ty, Node current){
 	Node tmp = null;
-	if (board[tx][ty]=='#' || board[tx][ty]=='$'){
+	System.out.println(this);
+	System.out.println(board[tx][ty]==path || board[tx][ty]==exit);
+	if (board[tx][ty]==path || board[tx][ty]==exit){
 	    tmp = new Node(tx,ty);
 	    tmp.setPrev(current);
 	    f.add(tmp);
 	}
-						
+	//delay(20);					
     }
 
     public void bfs(int x, int y){
-	//f = new Frontier();
-	f = new StackFront();
+	f = new Frontier();
+	//f = new StackFront();
 
 	f.add(new Node(x,y));
 
@@ -115,24 +116,26 @@ public class Maze
 	    int cx = current.getX();
 	    int cy = current.getY();
 
-	    if (board[cx][cy]=='$')
+	    if (board[cx][cy]==exit){
 		break;
-						
-	    board[cx][cy]='z';
+	    }
+		
+	    board[cx][cy]=visited;
 
 	    addToFront(cx+1,cy,current);
 	    addToFront(cx-1,cy,current);
 	    addToFront(cx,cy+1,current);
 	    addToFront(cx,cy-1,current);
 
-	    delay(50);
-	    System.out.println(this);
+	    
+	    delay(20);
+	    //System.out.println(this);
 	}
 
 	// path recovery
 	for (Node p = current.getPrev(); p != null ; p = p.getPrev()){
-	    board[p.getX()][p.getY()] = 'P';
-	    delay(100);
+	    board[p.getX()][p.getY()] = me;
+	    delay(50);
 	    System.out.println(this);
 	}
     }
@@ -145,4 +148,3 @@ public class Maze
 		
     }
 }
-
