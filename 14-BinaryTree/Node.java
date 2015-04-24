@@ -3,7 +3,7 @@ public class Node {
     private Node left, right;
 
     public Node() {
-	data = -1;
+	data = 0;
 	left = null;
 	right = null;
     }
@@ -42,6 +42,10 @@ public class Node {
 
     public void setRight(Node n) {
 	right = n;
+    }
+
+    public String toString() {
+	return "" + data+"\n"+"Left: "+left+"\n"+"Right: "+right;
     }
 }
 	 
