@@ -32,16 +32,20 @@ public class BST {
 	    }
 	}
     }
-    
-    public Node search(Node root, int i) {
-	while (root != null) {
-	    int n = i - root.getData;
-	    if (n > 0) {
-		root = root.getRight();
-	    } else {
-		root = root.getLeft();
+
+    public Node search(Node root, int i){
+	while (root!=null){
+	    int n = i - root.getData();
+	    if (n==0){
+		return root;
+	    }
+	    if(n>0){
+		root=root.getRight();
+	    } else if (n<0){
+		root=root.getLeft();
 	    }
 	}
+	return root;
     }
  
     public String toString() {
@@ -53,6 +57,7 @@ public class BST {
 	b.insert(b.root, 20);
 	b.insert(b.root, 30);
 	System.out.println(b);
+	System.out.println(b.search(b.root, 30));
     }
 }
 
