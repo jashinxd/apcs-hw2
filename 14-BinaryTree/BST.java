@@ -10,11 +10,11 @@ public class BST {
     }
 
     public void insert(Node r, int i) {
+	Node n = new Node(i);
 	if (r == null) {
-	    root = new Node(i);
+	    root = n;
 	} else {
 	    boolean left = false;
-	    Node n = new Node(i);
 	    Node tmp = r, piggyback = r;
 	    while (tmp != null) {
 		piggyback = tmp;
@@ -38,8 +38,7 @@ public class BST {
 	    int n = i - root.getData();
 	    if (n==0){
 		return root;
-	    }
-	    if(n>0){
+	    } else if(n>0){
 		root=root.getRight();
 	    } else if (n<0){
 		root=root.getLeft();
@@ -47,10 +46,29 @@ public class BST {
 	}
 	return root;
     }
- 
-    public String toString() {
-	return ""+root;
+    
+    public Node searchR(Node t, int i) {
+	if (t == null || t.getData() == i) {
+	    return t;
+	} else if (i<t.getData()) {
+	    return searchR(t.getLeft(), i);
+	} else {
+	    return searchR(t.getRight(), i);
+	}
     }
+
+    public String traverse(Node n) {
+	if (n == null) {
+	    return null;
+	} else {
+	    return n.getData() + "\nLeft: " + traverse(n.getLeft()) + " Right " + traverse(n.getRight());
+	}  
+    }
+
+    public String toString() {
+	return "" + traverse(root);
+    }
+
     public static void main(String[] args) {
 	BST b = new BST();
 	b.insert(b.root, 5);
