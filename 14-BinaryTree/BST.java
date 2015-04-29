@@ -58,11 +58,52 @@ public class BST {
     }
 
     public String traverse(Node n) {
+	String s = "";
 	if (n == null) {
-	    return null;
+	    return "";
 	} else {
-	    return n.getData() + "\nLeft: " + traverse(n.getLeft()) + " Right " + traverse(n.getRight());
+	    s = s + traverse(n.getLeft()) + " " + n.getData() + " " + traverse(n.getRight());
 	}  
+	return s;
+    }
+    
+    public Node remove(int i) {
+	Node piggyback = null;
+	Node tmp = null;
+	boolean left = true;
+	if (root == null) {
+	    return root;
+	} else {
+	    tmp = root;
+	    while (tmp.getData() != i) {
+		piggyback = tmp;
+		if (i < tmp.getData()) {
+		    tmp = tmp.getLeft();
+		    left = true;
+		} else {
+		    tmp = tmp.getRight();
+		    left = false;
+		}
+	    }
+	    if (tmp == null) {
+		return tmp;
+	    } else if (tmp.getLeft() == null && tmp.getRight() == null) {
+		if (left) {
+		    piggyback.setLeft(null);
+		} else {
+		    piggyback.setRight(null);
+		}
+		return tmp;
+	    } else if (left) {
+		if (tmp.getLeft() == null) {
+		    piggyback.setLeft(tmp.getRight());
+		} else piggyback.setLeft(tmp.getLeft());
+	    } else if (!left) {
+		if (tmp.getLeft() == null) {
+		    piggyback.setRight(tmp.getRight());
+		} else piggyback.setRight(tmp.getLeft());
+	    }
+	}
     }
 
     public String toString() {

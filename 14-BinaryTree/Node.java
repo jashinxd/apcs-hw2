@@ -45,7 +45,7 @@ public class Node {
     }
 
     public String toString() {
-	return "" + data+"\n"+"Left: "+left+"\n"+"Right: "+right;
+	return "" + data;
     }
 }
 	 
