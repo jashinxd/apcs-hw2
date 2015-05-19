@@ -24,6 +24,42 @@ Hashing
           h(x) = x % 10000 <-- converts to a 4 digit index
           h(x) = multiply all non-zero digits of x % 10000
 - PROBLEM -- Multiple objects can hash to the same slot/index
-              -- Clash/collision
+          -- Clash/collision
     * Hash table array has to be sufficiently large (Sparsely populated)
     * Hash function should do a good job distributing items in the table
+
+
+5/19/15
+Example of a hash function:
+
+  int hash (String s) {
+      h = 1;
+      for (i = 0 to s.length()) {
+  	  h = h * 11 + int(s.charAt(i));
+      }
+      return h % tablesize;
+  }
+
+Styles of Hashing:
+  1.Closed Hashing:
+    * Everything is stored in the array
+    * Collision 
+      --> Rehashing - Run the hash function again
+      --> Linear Probing - Store the data in the next index
+      --> Leave space in the table using a multiplier
+          EX) h(x) = (x % 100) * 3 --> leaves space for Linear Probing
+    --Runtime of Closed Hashing--
+      * Insert - Expected O(i)
+      * Retrieval - Expected O(i)
+      * Doesn't allow for retrieval of largest/smallest element
+
+  2.Open Hashing;
+    * Each array element is a pointer to a linked list of values that hash to 
+      that element.
+      * Insert - Always O(1)
+      * Retrieval - Expected O(1)
+        --> O(n) with respect to the length n of the linked list at the correct
+            position
+
+		    
+
