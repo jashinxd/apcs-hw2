@@ -1,4 +1,4 @@
-/* 5/18/15
+5/18/15
 -- HASHING/HASH TABLES --
 You want to store all info on Stuy students in a data structure
 You want to optimize for...
